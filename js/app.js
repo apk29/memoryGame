@@ -6,8 +6,8 @@ let cards = ["fa-diamond", "fa-diamond", "fa-paper-plane-o", "fa-paper-plane-o",
     "fa-bicycle", "fa-bicycle"
 ]
 
-let openCard = [];
-let startGame = false;
+let openCard = [],
+    startGame = false;
 
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -42,12 +42,13 @@ function toggleCard() {
     $(".card").on("click", function() {
         $(this).toggleClass("open show");
         startGame = true;
+        
     })
 }
 
 function addToggleCard() {
-	openCard.push(toggleCard);
-	console.log(toggleCard);
+	openCard.push($(this));
+	console.log(openCard);
 }
 
 createCard();
