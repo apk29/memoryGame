@@ -41,20 +41,22 @@ function createCard() {
 function toggleCard() {
     $(".card").on("click", function() {
         $(this).toggleClass("open show");
+        openCard.push($(this));
         startGame = true;
+        console.log(openCard);
         
     })
 }
 
-function addToggleCard() {
+/*function addToggleCard() {
 	openCard.push($(this));
 	console.log(openCard);
-}
+}*/
 
 createCard();
 shuffle(cards);
 toggleCard();
-addToggleCard();
+/*addToggleCard();*/
 
 
 /*
@@ -74,3 +76,8 @@ deck.addEventListener('click', event => {
 		clickTarget.classList.toggle('open');
 		clickTarget.classList.toggle('show');
 	}*/
+
+   /* https://www.diigo.com/outliner/fii42b/Udacity-Memory-Game-Project?key=dwj0y5x9cw
+    https://gist.github.com/kaldhussaeter/258ddf8de1c5ae9c68ee557c6b1a8ad4
+    https://github.com/Ul1ra/MemGame/blob/master/js/app.js
+    https://github.com/sarah-maris/pokematch/blob/master/js/game.js*/
