@@ -1,10 +1,11 @@
 /*
  * Create a list that holds all of your cards
  */
-let cards = ["fa-diamond", "fa-diamond", "fa-paper-plane-o", "fa-paper-plane-o", "fa fa-anchor", "fa fa-anchor",
-    "fa fa-bolt", "fa fa-bolt", "fa-cube", "fa-cube", "fa-anchor", "fa-anchor", "fa-leaf", "fa-leaf",
+let cards = ["fa-diamond", "fa-diamond", "fa-paper-plane-o", "fa-paper-plane-o",
+    "fa fa-anchor", "fa fa-anchor", "fa fa-bolt", "fa fa-bolt",
+    "fa-cube", "fa-cube", "fa-anchor", "fa-anchor", "fa-leaf", "fa-leaf",
     "fa-bicycle", "fa-bicycle"
-]
+];
 
 let openCard = [],
     startGame = false;
@@ -25,6 +26,7 @@ function shuffle(array) {
 
     return array;
 }
+
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -32,8 +34,7 @@ function shuffle(array) {
  *   - add each card's HTML to the page
  */
 function createCard() {
-    let cardList = shuffle(cards);
-    cardList.forEach(function(card) {
+    shuffle(cards).forEach(function(card) {
         $(".deck").append('<li><i class="card fa ' + card + '"></i></li>');
     })
 }
@@ -41,22 +42,19 @@ function createCard() {
 function toggleCard() {
     $(".card").on("click", function() {
         $(this).toggleClass("open show");
-        openCard.push($(this));
+        pushCards()
         startGame = true;
-        console.log(openCard);
-        
     })
 }
+function pushCards() {
+    openCard.push($(this));
+}
 
-/*function addToggleCard() {
-	openCard.push($(this));
-	console.log(openCard);
-}*/
 
 createCard();
 shuffle(cards);
 toggleCard();
-/*addToggleCard();*/
+
 
 
 /*
@@ -71,13 +69,8 @@ toggleCard();
 /*const deck = document.querySelector('.deck');
 
 deck.addEventListener('click', event => {
-	const clickTarget = event.target;
-	if (clickTarget.classList.contains('card')) {
-		clickTarget.classList.toggle('open');
-		clickTarget.classList.toggle('show');
-	}*/
-
-   /* https://www.diigo.com/outliner/fii42b/Udacity-Memory-Game-Project?key=dwj0y5x9cw
-    https://gist.github.com/kaldhussaeter/258ddf8de1c5ae9c68ee557c6b1a8ad4
-    https://github.com/Ul1ra/MemGame/blob/master/js/app.js
-    https://github.com/sarah-maris/pokematch/blob/master/js/game.js*/
+    const clickTarget = event.target;
+    if (clickTarget.classList.contains('card')) {
+        clickTarget.classList.toggle('open');
+        clickTarget.classList.toggle('show');
+    }*/
