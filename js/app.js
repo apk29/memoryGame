@@ -41,13 +41,28 @@ function createCard() {
 /*set up the event listener for a card. If a card is clicked:*/
 function toggleCard() {
     $(".card").on("click", function() {
+        if ($(this).hasClass("open show")) { return; }
         $(this).toggleClass("open show");
-        pushCards()
+        /*Once cards are flipped, this function puts the flipped card into the openCards array.*/
+        openCard.push($(this));
+        console.log(openCard);
+       
         startGame = true;
+        cardMatch();
     })
 }
-function pushCards() {
-    openCard.push($(this));
+
+/*function pushCards() {
+    openCard.push();
+    console.log(openCard);*/ /*see card to determine location*/
+/*}*/
+
+
+function cardMatch() {
+    if (openCard.length === 2){
+        /*if (openCard[0][0].classList[2] === openCard[1][0].classList[2]){
+        }*/
+    }
 }
 
 
