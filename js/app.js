@@ -56,19 +56,32 @@ function toggleCard() {
 /*}*/
 
 
-function cardMatch(toggleCard) {
+function cardMatch() {
     if (openCard.length === 2) {
         if (openCard[0][0].classList[2] === openCard[1][0].classList[2]){
+            openCard[0][0].classList.add("match");
+            openCard[1][0].classList.add("match");
+            $(openCard[0]).off('click');
+            $(openCard[1]).off('click');
+            emptyOpenCard();
             console.log(openCard);
-        } else {
-            setTimeout(removeClass, 600);
+        } 
+        else {
+            openCard[0][0].classList.add("wrong");
+            openCard[1][0].classList.add("wrong");
+            setTimeout(removeClass, 1000);
+            setTimeout(emptyOpenCard, 1100);console.log("two")
         }
     }
     
 }
 
 function removeClass() {
-    $('.card').removeClass("open show");
+    $('.card').removeClass("open show");console.log("remove")
+}
+function emptyOpenCard() {
+    openCard = [];
+    console.log("emptyOpenCard")
 }
 createCard();
 shuffle(cards);
