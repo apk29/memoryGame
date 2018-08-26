@@ -1,4 +1,4 @@
-/*
+
  * Create a list that holds all of your cards
  */
 let cards = ["fa-diamond", "fa-diamond", "fa-paper-plane-o", "fa-paper-plane-o",
@@ -41,7 +41,9 @@ function createCard() {
 /*set up the event listener for a card. If a card is clicked:*/
 function toggleCard() {
     $(".card").on("click", function() {
-        if ($(this).hasClass("open show")) { return; }
+        if ($(this).hasClass("open show")) {
+            return;
+        }
         $(this).toggleClass("open show");
         /*Once cards are flipped, this function puts the flipped card into the openCards array.*/
         openCard.push($(this));
@@ -49,36 +51,41 @@ function toggleCard() {
         cardMatch();
     })
 }
-
-/*function pushCards() {
-    openCard.push();
-    console.log(openCard);*/ /*see card to determine location*/
-/*}*/
-
-
+/*display the card's symbol (put this functionality in another function that you call from this one)
+ *add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)*/
 function cardMatch() {
     if (openCard.length === 2) {
-        if (openCard[0][0].classList[2] === openCard[1][0].classList[2]){
-            openCard[0][0].classList.add("match");
+       /*if the list already has another card, check to see if the two cards match*/
+       /*path to compare the name of the cards*/
+        if (openCard[0][0].classList[2] === openCard[1][0].classList[2]) {
+            /*add match so removeClass doesn't delete pairs that are already matched*/
+            openCard[0][0].classList.add("match"); 
             openCard[1][0].classList.add("match");
+            /*if the cards do match, lock the cards in the open position 
+            (put this functionality in another function that you call from this one)*/
             $(openCard[0]).off('click');
             $(openCard[1]).off('click');
             emptyOpenCard();
             console.log(openCard);
-        } 
-        else {
+        } else {
+            /*if the cards do not match, remove the cards from the list and hide the 
+            card's symbol (put this functionality in another function that you call from this one)*/
             openCard[0][0].classList.add("wrong");
             openCard[1][0].classList.add("wrong");
-            setTimeout(removeClass, 1000);
-            setTimeout(emptyOpenCard, 1100);console.log("two")
+            /*removes the "open show" so card flips over to blank again because cards did not match*/
+            setTimeout(removeClass, 900); 
+            setTimeout(emptyOpenCard, 900);
+            console.log("two")
         }
     }
-    
+
 }
 
 function removeClass() {
-    $('.card').removeClass("open show");console.log("remove")
+    $('.card').removeClass("open show");
+    console.log("remove")
 }
+
 function emptyOpenCard() {
     openCard = [];
     console.log("emptyOpenCard")
@@ -90,11 +97,10 @@ toggleCard();
 
 
 /*
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
+ *  
+ 
+ *   
+ *    + 
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
@@ -105,4 +111,4 @@ deck.addEventListener('click', event => {
     if (clickTarget.classList.contains('card')) {
         clickTarget.classList.toggle('open');
         clickTarget.classList.toggle('show');
-    }*/
+    }
