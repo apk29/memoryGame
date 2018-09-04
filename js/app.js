@@ -76,7 +76,6 @@ function cardMatch() {
             setTimeout(removeClass, 1000);
             setTimeout(emptyOpenCard, 1000);
             matchCount++;console.log(matchCount);
-            
         }
     }
     /*increment the move counter and display it on the page (put this functionality in 
@@ -85,7 +84,7 @@ function cardMatch() {
 }
 
 function movesCount() {
-    if (matchCount % 2 === 0 || matchCount === 1) {
+    if (matchCount % 2 === 0 || matchCount === 1) { /*only count when two cards are selected*/
         $(".moves").text(matchCount.toString());
         console.log("three");
     };
@@ -100,6 +99,12 @@ function emptyOpenCard() {
     openCard = [];
     console.log("five")
 }
+function restartGame() {
+    $(".restart").on("click", function(){
+        location.reload();
+    });   
+}
+restartGame();
 createCard();
 shuffle(cards);
 toggleCard();
