@@ -8,7 +8,7 @@ let cards = ["fa-diamond", "fa-diamond", "fa-paper-plane-o", "fa-paper-plane-o",
 let openCard = [],
     startGame = false,
     matchCount = 0;
-
+    moves = 0;
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -91,7 +91,7 @@ function movesCount() {
         $(".moves").text(matchCount.toString());
         console.log("three");
     };
-}
+
 
 function removeClass() {
     $('.card').removeClass("open show");
