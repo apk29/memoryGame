@@ -35,6 +35,7 @@ function shuffle(array) {
 function createCard() {
     shuffle(cards).forEach(function(card) {
         $(".deck").append('<li><i class="card fa ' + card + '"></i></li>');
+        
     })
 }
 /*set up the event listener for a card. If a card is clicked:*/
@@ -72,19 +73,21 @@ function cardMatch() {
             card's symbol (put this functionality in another function that you call from this one)*/
             openCard[0][0].classList.add("wrong");
             openCard[1][0].classList.add("wrong");
+            matchCount++;console.log(matchCount);
             /*removes the "open show" so card flips over to blank again because cards did not match*/
             setTimeout(removeClass, 1000);
             setTimeout(emptyOpenCard, 1000);
-            matchCount++;console.log(matchCount);
+            
         }
     }
     /*increment the move counter and display it on the page (put this functionality in 
     another function that you call from this one)*/
-    movesCount();console.log("one");    
+    movesCount();
+    console.log("one");    
 }
 
 function movesCount() {
-    if (matchCount % 2 === 0 || matchCount === 1) { /*only count when two cards are selected*/
+    if (matchCount === 1) { /*only count when two cards are selected*/
         $(".moves").text(matchCount.toString());
         console.log("three");
     };
