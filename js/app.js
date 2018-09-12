@@ -7,7 +7,8 @@ let cards = ["fa-diamond", "fa-diamond", "fa-paper-plane-o", "fa-paper-plane-o",
 ]
 
 let openCard = [],
-    startGame = false;
+    startGame = false,
+    moves = 0;
 
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -42,10 +43,12 @@ function toggleCard() {
     $(".card").on("click", function() {
         $(this).toggleClass("open show");
         startGame = true;
-        
+        moves++
     })
 }
-
+function updateMoves() {
+    $(moves===)
+}
 function addToggleCard() {
 	openCard.push($(this));
 	console.log(openCard);
