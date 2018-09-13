@@ -7,7 +7,8 @@ let cards = ["fa-diamond", "fa-diamond", "fa-paper-plane-o", "fa-paper-plane-o",
 
 let openCard = [],
     startGame = false,
-    matchCount = 0;
+    matchCount = 0,
+    matched = 0;
 
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -66,6 +67,8 @@ function cardMatch() {
             $(openCard[0]).off('click');
             $(openCard[1]).off('click');
             matchCount++;
+            matched++; console.log(matched);
+            popup();
             emptyOpenCard();
             console.log(openCard);
         } else {
@@ -86,20 +89,28 @@ function cardMatch() {
     console.log("one");    
 }
 
-/*function movesCount() {
-    if (matchCount === 1) { only count when two cards are selected
-        $(".moves").text(matchCount.toString());
-        console.log("three");
-    };
-}*/
-function movesCount() {
+function movesCount() {/*this changes move to moves based on matchcount*/
     if (matchCount === 1) {
         $("#moves2").text("Move");
         } else {
             $("#moves2").text("Moves");
         }
-        $(".moves").text(matchCount.toString());
+        $(".moves").text(matchCount.toString()); /*this shows the move count*/
 }
+function popup() { /*source: https: www.w3schools.com/howto/howto_css_modals.asp */
+    if (matched === 1) {
+        var modal = document.getElementById('myModal');
+        var span = document.getElementsByClassName("close")[0];
+        modal.style.display = "block";console.log("modal")
+// When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+        
+    }
+}
+
+
 function removeClass() {
     $('.card').removeClass("open show");
     console.log("four")
@@ -118,6 +129,7 @@ restartGame();
 createCard();
 shuffle(cards);
 toggleCard();
+
 
 
 
