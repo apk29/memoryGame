@@ -86,13 +86,20 @@ function cardMatch() {
     console.log("one");    
 }
 
-function movesCount() {
-    if (matchCount === 1) { /*only count when two cards are selected*/
+/*function movesCount() {
+    if (matchCount === 1) { only count when two cards are selected
         $(".moves").text(matchCount.toString());
         console.log("three");
     };
+}*/
+function movesCount() {
+    if (matchCount === 1) {
+        $("#moves2").text("Move");
+        } else {
+            $("#moves2").text("Moves");
+        }
+        $(".moves").text(matchCount.toString());
 }
-
 function removeClass() {
     $('.card').removeClass("open show");
     console.log("four")
