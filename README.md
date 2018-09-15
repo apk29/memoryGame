@@ -4,7 +4,7 @@
 2. To play, player has to click and match two cards at a time untill all 16 cards are matched.
 3. The game is scored based on a start rating. The game will also be timed.
 4. Once the player is finished, a popup will appear to tell you how many stars you got as well
-   how many turns you took, and the amount of time finish the game. 
+   how many turns you took, and the amount of time it took to finish the game. 
 
 How to run.
 
