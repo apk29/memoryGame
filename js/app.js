@@ -11,6 +11,8 @@ let openCard = [],
     matchCount = 0,
     matched = 0,
     starRating = "3";
+const deck = $(".deck");
+    
 
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -58,12 +60,15 @@ function toggleCard() {
  *add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)*/
 function cardMatch() {
     if (openCard.length === 2) {
+        removeClick(); /*Prevents additional clicks after two cards are clicked*/
+        setTimeout(addClick, 800); 
         /*if the list already has another card, check to see if the two cards match*/
         /*path to compare the name of the cards*/
         if (openCard[0][0].classList[2] === openCard[1][0].classList[2]) {
             /*add match so removeClass doesn't delete pairs that are already matched*/
             openCard[0][0].classList.add("match");
             openCard[1][0].classList.add("match");
+
             /*if the cards do match, lock the cards in the open position 
             (put this functionality in another function that you call from this one)*/
             $(openCard[0]).off('click');
@@ -79,6 +84,7 @@ function cardMatch() {
             card's symbol (put this functionality in another function that you call from this one)*/
             openCard[0][0].classList.add("wrong");
             openCard[1][0].classList.add("wrong");
+
             matchCount++;
             console.log(matchCount);
             /*removes the "open show" so card flips over to blank again because cards did not match*/
@@ -114,7 +120,6 @@ function updateStar() {
             $("#starTwo").removeClass("fa-star");
             starRating = "1";
         } else if (matchCount > 20) {
-            $("#starThree").removeClass("fa-star");
             starRating = "1";
         }
     })
@@ -176,6 +181,12 @@ function restartGame() {
     $(".restart").on("click", function () {
         location.reload();
     });
+}
+function removeClick() {
+    deck.addClass("noClick");
+}
+function addClick() {
+    deck.removeClass("noClick");
 }
 restartGame();
 createCard();
