@@ -1,20 +1,16 @@
 # Memory Game Project
 
-## Table of Contents
+1. This is a browser based card matching game.
+2. To play, player has to click and match two cards at a time untill all 16 cards are matched.
+3. The game is scored based on a start rating. The game will also be timed.
+4. Once the player is finished, a popup will appear to tell you how many stars you got as well
+   how many turns you took, and the amount of time finish the game. 
 
-* [Instructions](#instructions)
-* [Contributing](#contributing)
+How to run.
 
-## Instructions
+You can go to the live version:
+[live version](https://apk29.github.io/memoryGame/)
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+Or download the files and open the index.html file in a browser. 
 
-To get started, open `js/app.js` and start building out the app's functionality
 
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
-
-## Contributing
-
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
-
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).

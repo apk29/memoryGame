@@ -35,14 +35,14 @@ function shuffle(array) {
  *   - add each card's HTML to the page
  */
 function createCard() {
-    shuffle(cards).forEach(function(card) {
+    shuffle(cards).forEach(function (card) {
         $(".deck").append('<li><i class="card fa ' + card + '"></i></li>');
-        
+
     })
 }
 /*set up the event listener for a card. If a card is clicked:*/
 function toggleCard() {
-    $(".card").on("click", function() {
+    $(".card").on("click", function () {
         if ($(this).hasClass("open show")) {
             return;
         }
@@ -68,7 +68,8 @@ function cardMatch() {
             $(openCard[0]).off('click');
             $(openCard[1]).off('click');
             matchCount++;
-            matched++; console.log(matched);
+            matched++;
+            console.log(matched);
             popup();
             emptyOpenCard();
             console.log(openCard);
@@ -77,36 +78,38 @@ function cardMatch() {
             card's symbol (put this functionality in another function that you call from this one)*/
             openCard[0][0].classList.add("wrong");
             openCard[1][0].classList.add("wrong");
-            matchCount++;console.log(matchCount);
+            matchCount++;
+            console.log(matchCount);
             /*removes the "open show" so card flips over to blank again because cards did not match*/
             setTimeout(removeClass, 1000);
             setTimeout(emptyOpenCard, 1000);
-            
+
         }
     }
     /*increment the move counter and display it on the page (put this functionality in 
     another function that you call from this one)*/
     movesCount();
-    console.log("one");    
+    console.log("one");
 }
 
-function movesCount() {/*this changes move to moves based on matchcount*/
+function movesCount() { /*this changes move to moves based on matchcount*/
     if (matchCount === 1) {
         $("#moves2").text("Move");
-        } else {
-            $("#moves2").text("Moves");
-        }
-        $(".moves").text(matchCount.toString()); /*this shows the move count*/
-        updateStar();
+    } else {
+        $("#moves2").text("Moves");
+    }
+    $(".moves").text(matchCount.toString()); /*this shows the move count*/
+    updateStar();
 }
+
 function updateStar() {
-       $(".card").on("click", function(){
-        if (matchCount > 0 && matchCount < 15){
+    $(".card").on("click", function () {
+        if (matchCount > 0 && matchCount < 15) {
             starRating = "3";
-        } else if (matchCount >=  10 && matchCount <= 15) {
+        } else if (matchCount >= 10 && matchCount <= 15) {
             $("#starOne").removeClass("fa-star");
             starRating = "2";
-        } else if (matchCount >= 15 && matchCount <=20) {
+        } else if (matchCount >= 15 && matchCount <= 20) {
             $("#starTwo").removeClass("fa-star");
             starRating = "1";
         } else if (matchCount > 20) {
@@ -115,6 +118,7 @@ function updateStar() {
         }
     })
 }
+
 function popup() { /*source: https: www.w3schools.com/howto/howto_css_modals.asp */
     if (matched === 8) {
         var modal = document.getElementById('myModal');
@@ -123,35 +127,40 @@ function popup() { /*source: https: www.w3schools.com/howto/howto_css_modals.asp
         $("#total-moves").text(matchCount); /*shows the cards that were matched in the pop up*/
         $("#total-stars").text(starRating); /*show what your starRating is in the popup*/
 
-        modal.style.display = "block";console.log("modal")
-       /**/
+        modal.style.display = "block";
+        console.log("modal")
+        /**/
 
-     // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
-        modal.style.display = "none";
-    }
-    $("#restart").on("click", function() {
-       location.reload();
-   });
-clearInterval(timer);
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+        $("#restart").on("click", function () {
+            location.reload();
+        });
+        clearInterval(timer);
     }
 }
 
 // Start timer on the first card click
 function startTimer() {
-  let clicks = 0;
-  $(".card").on("click", function() {
-    clicks += 1;
-    if (clicks === 1) {
-      var sec = 0;
-      function time ( val ) { return val > 9 ? val : "0" + val; }
-      timer = setInterval( function(){
-        $(".seconds").html(time(++sec % 60));
-        $(".minutes").html(time(parseInt(sec / 60, 10))); /*parseInt returns an integer based with based 10*/
-      }, 1000);
-    }
-  })
- }
+    let clicks = 0;
+    $(".card").on("click", function () {
+        clicks += 1;
+        if (clicks === 1) {
+            var sec = 0;
+
+            function time(val) {
+                return val > 9 ? val : "0" + val;
+            }
+            timer = setInterval(function () {
+                $(".seconds").html(time(++sec % 60));
+                $(".minutes").html(time(parseInt(sec / 60, 10))); /*parseInt returns an integer based with based 10*/
+            }, 1000);
+        }
+    })
+}
+
 function removeClass() {
     $('.card').removeClass("open show");
     console.log("four")
@@ -161,18 +170,17 @@ function emptyOpenCard() {
     openCard = [];
     console.log("five")
 }
+
 function restartGame() {
-    $(".restart").on("click", function(){
+    $(".restart").on("click", function () {
         location.reload();
-    });   
+    });
 }
 restartGame();
 createCard();
 shuffle(cards);
 toggleCard();
 startTimer();
-
-
 
 
 /*
