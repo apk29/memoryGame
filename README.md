@@ -8,7 +8,7 @@
 
 How to run.
 
-You can go to the live version:
+You can go to the:
 [live version](https://apk29.github.io/memoryGame/)
 
 Or download the files and open the index.html file in a browser. 
