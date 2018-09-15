@@ -8,7 +8,8 @@ let cards = ["fa-diamond", "fa-diamond", "fa-paper-plane-o", "fa-paper-plane-o",
 let openCard = [],
     startGame = false,
     matchCount = 0,
-    matched = 0;
+    matched = 0,
+    starRating = "3";
 
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -96,21 +97,61 @@ function movesCount() {/*this changes move to moves based on matchcount*/
             $("#moves2").text("Moves");
         }
         $(".moves").text(matchCount.toString()); /*this shows the move count*/
+        updateStar();
+}
+function updateStar() {
+       $(".card").on("click", function(){
+        if (matchCount > 0 && matchCount < 15){
+            starRating = "3";
+        } else if (matchCount >=  10 && matchCount <= 15) {
+            $("#starOne").removeClass("fa-star");
+            starRating = "2";
+        } else if (matchCount >= 15 && matchCount <=20) {
+            $("#starTwo").removeClass("fa-star");
+            starRating = "1";
+        } else if (matchCount > 20) {
+            $("#starThree").removeClass("fa-star");
+            starRating = "0";
+        }
+    })
 }
 function popup() { /*source: https: www.w3schools.com/howto/howto_css_modals.asp */
-    if (matched === 1) {
+    if (matched === 8) {
         var modal = document.getElementById('myModal');
         var span = document.getElementsByClassName("close")[0];
+
+        $("#total-moves").text(matchCount); /*shows the cards that were matched in the pop up*/
+        $("#total-stars").text(starRating); /*show what your starRating is in the popup*/
+
         modal.style.display = "block";console.log("modal")
-// When the user clicks on <span> (x), close the modal
+       /**/
+
+     // When the user clicks on <span> (x), close the modal
     span.onclick = function() {
         modal.style.display = "none";
     }
-        
+    $("#restart").on("click", function() {
+       location.reload();
+   });
+clearInterval(timer);
     }
 }
 
-
+// Start timer on the first card click
+function startTimer() {
+  let clicks = 0;
+  $(".card").on("click", function() {
+    clicks += 1;
+    if (clicks === 1) {
+      var sec = 0;
+      function time ( val ) { return val > 9 ? val : "0" + val; }
+      timer = setInterval( function(){
+        $(".seconds").html(time(++sec % 60));
+        $(".minutes").html(time(parseInt(sec / 60, 10))); /*parseInt returns an integer based with based 10*/
+      }, 1000);
+    }
+  })
+ }
 function removeClass() {
     $('.card').removeClass("open show");
     console.log("four")
@@ -129,6 +170,7 @@ restartGame();
 createCard();
 shuffle(cards);
 toggleCard();
+startTimer();
 
 
 
