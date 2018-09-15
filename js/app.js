@@ -1,9 +1,10 @@
 /** Create a list that holds all of your cards*/
-let cards = ["fa-diamond", "fa-diamond", "fa-paper-plane-o", "fa-paper-plane-o",
-    "fa fa-anchor", "fa fa-anchor", "fa fa-bolt", "fa fa-bolt",
-    "fa-cube", "fa-cube", "fa-anchor", "fa-anchor", "fa-leaf", "fa-leaf",
-    "fa-bicycle", "fa-bicycle"
+let arr = ["fa-diamond", "fa-paper-plane-o",
+    "fa fa-anchor", "fa fa-bolt",
+    "fa-cube", "fa-leaf",
+    "fa-bicycle", "fa-bomb"
 ];
+let cards = arr.concat(arr); /*double the list of cards instead of typing it twice*/
 
 let openCard = [],
     startGame = false,
@@ -114,7 +115,7 @@ function updateStar() {
             starRating = "1";
         } else if (matchCount > 20) {
             $("#starThree").removeClass("fa-star");
-            starRating = "0";
+            starRating = "1";
         }
     })
 }
